@@ -48,7 +48,6 @@ on_norm =st.checkbox('データの正規化')
 
 
 
-
 if st.button('実行'):
   if data is None:
     st.write('データが未読み込みの状態で実行されました。サンプルデータで実行します')
