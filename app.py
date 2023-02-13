@@ -28,29 +28,29 @@ def lingam_f(data):
   model.fit(data)
   return model,list(data.columns) #因果関係グラフとノード名（データカラム名）
 
-st.title("hello")
+st.title("LiNGAM Tool")
 
 data=None
 
-st.write('分析データのアップロード')
+st.subheader('1st. 分析データのアップロード')
 upload_file=st.file_uploader('upload a csv file')
 if upload_file is not None:
   data=pd.read_csv(upload_file)
+  st.info('データの上位数件が以下に表示されます')
   st.write(data.head())
 
 
-
+st.subheader('2nd. (Option) 条件インプット')
 #係数足切り下限値フォーム
-input_limit = st.number_input('表示する係数の下限')
-st.write('下限値は{}'.format(round(input_limit,3)))
+input_limit = st.number_input('結果で表示する因果パス係数の下限')
 #データ正規化の有無確認フォーム
-on_norm =st.checkbox('データの正規化')
+on_norm =st.checkbox('データの正規化を実施するならチェック')
 
 
-
-if st.button('実行'):
+st.subheader('3rd. 実行')
+if st.button('因果探索実行！'):
   if data is None:
-    st.write('データが未読み込みの状態で実行されました。サンプルデータで実行します')
+    st.info('データが未読み込みの状態で実行されました。サンプルデータで実行します')
     data = read_sample_data()
   if on_norm:
     #正規化
@@ -62,11 +62,10 @@ if st.button('実行'):
   st.graphviz_chart(dot)
   #係数のヒストグラム表示
   coeff_flat=[abs(x) for row in model._adjacency_matrix for x in row if x != 0]
-  if on_norm:
-    hist_fig = px.histogram(coeff_flat,nbins=30)
-    st.plotly_chart(hist_fig)
+  hist_fig = px.histogram(coeff_flat,nbins=30,title='因果パスの係数のヒストグラム')
+  st.plotly_chart(hist_fig)
 else:
-  st.write('NO..')
+  st.write('No Result')
 
 
 
