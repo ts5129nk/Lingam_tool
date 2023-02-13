@@ -65,7 +65,7 @@ if st.button('因果探索実行！'):
   hist_fig = px.histogram(coeff_flat,nbins=30,title='因果パスの係数のヒストグラム')
   st.plotly_chart(hist_fig)
 else:
-  st.write('No Result')
+  st.write('No Result...')
 
 
 
