@@ -1,0 +1,12 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+plotly
+
+lingam
+igraph
+pygam
+factor_analyzer
+streamlit
+networkx
