@@ -8,7 +8,13 @@ RUN apt-get update \
     # pipのアップデート
     && pip install --upgrade pip
 
+#アプリケーション（ホストに直接マウントして開発するときはコメントアウトする）
+COPY app.py /home/ 
+#pythonライブラリ
 COPY requirements.txt ${PWD}
+
 
 # pythonのパッケージをインストール
 RUN pip install -r requirements.txt
+
+WORKDIR /home/
