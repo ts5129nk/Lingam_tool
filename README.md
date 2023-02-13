@@ -7,5 +7,5 @@ docker run -it --rm --name lingam_tmp -p 8501:8501 lingam_img streamlit run app.
 
 
 ~~~
-http://localhost:850/
+http://localhost:8501/
 ~~~
