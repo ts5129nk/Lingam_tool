@@ -1,4 +1,4 @@
-# Lingam_tool
+# lingam_tool
 
 ~~~
 docker build . -t lingam_img
