@@ -6,4 +6,5 @@ phases:
             - echo "installing something"
     build:
         commands:
+            - echo "start pip install"
             - pip install -r requirements.txt
