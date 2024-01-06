@@ -1,0 +1,9 @@
+version: 0.2
+
+phases: 
+    install:
+        commands:
+            - echo "installing something"
+    build:
+        commands:
+            - pip install -r requirements.txt
